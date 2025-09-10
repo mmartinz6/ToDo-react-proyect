@@ -1,0 +1,16 @@
+{
+  "tareas": [
+    {
+      "id": "75ea",
+      "tarea": "Cupcake",
+      "fecha": "2025-09-10",
+      "estado": "pendiente"
+    },
+    {
+      "id": "7711",
+      "tarea": "Cheescake",
+      "fecha": "2025-09-11",
+      "estado": "pendiente"
+    }
+  ]
+}
