@@ -1,13 +1,14 @@
-import React, { createContext, useState, useEffect } from 'react';
-import ServicesTareas from '../services/ServicesTareas';
+import React, { createContext, useState, useEffect, useContext } from "react";
+import ServicesTareas from "../services/ServicesTareas";
+import { UsuarioContext } from "./UsuarioContext"; // importa el contexto de usuario
 
 export const TareasContext = createContext();
 
 export function TareasProvider({ children }) {
-  
+  const { usuario } = useContext(UsuarioContext); // usuario logueado
   const [tareas, setTareas] = useState([]);
 
-  // Trae tareas desde db.json
+  // Trae todas las tareas, pero luego se filtran por userId
   useEffect(() => {
     const fetchTareas = async () => {
       try {
@@ -27,10 +28,16 @@ export function TareasProvider({ children }) {
       return;
     }
 
+    if (!usuario) {
+      alert("Debe iniciar sesión para agregar tareas");
+      return;
+    }
+
     const nuevaTarea = {
       tarea: texto,
       fecha,
       estado: "pendiente",
+      userId: usuario.id, // 🔹 clave: tarea pertenece al usuario logueado
     };
 
     const tareaGuardada = await ServicesTareas.postTareas(nuevaTarea);
@@ -49,9 +56,7 @@ export function TareasProvider({ children }) {
     if (!tareaEncontrada) return;
 
     const tareaActualizada = {
-      id: tareaEncontrada.id,
-      tarea: tareaEncontrada.tarea,
-      fecha: tareaEncontrada.fecha,
+      ...tareaEncontrada,
       estado: tareaEncontrada.estado === "pendiente" ? "completada" : "pendiente",
     };
 
@@ -59,36 +64,47 @@ export function TareasProvider({ children }) {
     setTareas(tareas.map((tarea) => (tarea.id === id ? tareaActualizada : tarea)));
   };
 
-  //EditarTarea
-  const editarTarea = async() => {
-    if (!texto.trim() || !fecha) {
-      alert("Ingrese un tarea y selecione una fecha");
+  // Editar tarea
+  const editarTarea = async (id, nuevoTexto, nuevaFecha) => {
+    if (!nuevoTexto.trim() || !nuevaFecha) {
+      alert("Ingrese una tarea y seleccione una fecha");
       return;
     }
-    
-    const tareaEncontrada = tareas.find((tarea) => tarea.id === id)
-    
+
+    const tareaEncontrada = tareas.find((tarea) => tarea.id === id);
+    if (!tareaEncontrada) return;
+
     const tareaActualizada = {
-      id: tareaEncontrada.id,
+      ...tareaEncontrada,
       tarea: nuevoTexto,
       fecha: nuevaFecha,
-      estado: tareaEncontrada.estado,
     };
-    
+
     await ServicesTareas.putTareas(id, tareaActualizada);
-    
-    const nuevasTareas = tareas.map((tarea) => tarea.id === id ? tareaActualizada : tarea
-  );
 
-  setTareas(nuevasTareas);
+    const nuevasTareas = tareas.map((tarea) =>
+      tarea.id === id ? tareaActualizada : tarea
+    );
 
+    setTareas(nuevasTareas);
+  };
 
-  }
+  // 🔹 Mostrar solo las tareas del usuario logueado
+  const tareasFiltradas = usuario
+    ? tareas.filter((tarea) => tarea.userId === usuario.id)
+    : [];
 
   return (
-    <TareasContext.Provider value={{ tareas, agregarTarea, eliminarTarea, completarTarea, editarTarea }}>
+    <TareasContext.Provider
+      value={{
+        tareas: tareasFiltradas,
+        agregarTarea,
+        eliminarTarea,
+        completarTarea,
+        editarTarea,
+      }}
+    >
       {children}
     </TareasContext.Provider>
   );
 }
-

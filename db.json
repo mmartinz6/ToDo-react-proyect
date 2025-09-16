@@ -1,16 +1,64 @@
 {
   "tareas": [
     {
-      "id": "75ea",
-      "tarea": "Cupcake",
-      "fecha": "2025-09-10",
+      "id": "f39b",
+      "tarea": "Esto es una aprueba",
+      "fecha": "2025-09-21",
+      "estado": "completada"
+    },
+    {
+      "id": "b955",
+      "tarea": "madelin es la duena",
+      "fecha": "2025-09-17",
       "estado": "pendiente"
     },
     {
-      "id": "7711",
-      "tarea": "Cheescake",
-      "fecha": "2025-09-11",
-      "estado": "pendiente"
+      "id": "6d4b",
+      "tarea": "Soy Made",
+      "fecha": "2025-09-17",
+      "estado": "pendiente",
+      "userId": "4618"
+    },
+    {
+      "id": "d410",
+      "tarea": "Soy steven",
+      "fecha": "2025-09-17",
+      "estado": "pendiente",
+      "userId": "25f6"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "4618",
+      "nombre": "Madelin",
+      "apellido": "Martínez",
+      "correo": "made@gmail",
+      "username": "mmartinez",
+      "password": "1234"
+    },
+    {
+      "id": "25f6",
+      "nombre": "Steven",
+      "apellido": "Martínez",
+      "correo": "smartinez@gmail.com",
+      "username": "smartinez",
+      "password": "2000"
+    },
+    {
+      "id": "37c4",
+      "nombre": "Steven",
+      "apellido": "Salas",
+      "correo": "ssalas@fwd.com",
+      "username": "ssalas",
+      "password": "1234"
+    },
+    {
+      "id": "3128",
+      "nombre": "Maria",
+      "apellido": "Merlo",
+      "correo": "made@gmail.com",
+      "username": "mmerlo",
+      "password": "0000"
     }
   ]
 }

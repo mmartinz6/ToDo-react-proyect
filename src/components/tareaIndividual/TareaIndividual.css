@@ -1,0 +1,109 @@
+.tareaItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: background 0.2s;
+}
+
+.tareaItem:hover {
+  background-color: #f0f0f0;
+}
+
+.checkboxTarea {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.contenidoTarea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.textoTarea {
+  font-size: 16px;
+  color: #333;
+}
+
+.textoTarea.completada {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.botonesTarea button {
+  margin-left: 8px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btnEditar {
+  background-color: #005FCC;
+  color: white;
+}
+
+.btnEditar:hover{
+    background-color: #3498db;
+    color: white;
+}
+
+.btnEliminar {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btnEliminar:hover{
+    background-color: #FF7081;
+    color: white;
+}
+
+.editarContainer {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1;
+}
+
+.inputTexto, .inputFecha {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.btnGuardar {
+  background-color: #0AAA40;
+  color: white;
+  border-radius: 6px;
+  padding: 4px 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btnGuardar:hover{
+    background-color: #2ecc71;
+}
+
+.btnCancelar {
+  background-color: #878787;
+  color: white;
+  border-radius: 6px;
+  padding: 4px 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btnCancelar:hover{
+    background-color: #95a5a6;
+}

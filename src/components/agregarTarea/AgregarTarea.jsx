@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import '../agregarTarea/agregarTarea.css';
 import { TareasContext } from "../../context/TareasContext";
 
 function AgregarTarea() {
@@ -6,37 +7,44 @@ function AgregarTarea() {
   const [texto, setTexto] = useState("");
   const [fecha, setFecha] = useState("");
 
-  // Función para agregar tarea
-  const handleAgregar = () => {
+  const hoy = new Date().toISOString().split("T")[0];  //Evita seleccionar fechas anteriores a hoy
+
+  // Función boton para guardar/agregar tarea
+  const guardarAgregar = () => {
+    if (texto.trim() === "" || fecha === "") return;
     agregarTarea(texto, fecha);
     setTexto("");
     setFecha("");
   };
 
   // Detecta tecla Enter
-  const handleKeyDown = (e) => {
+  const detectarEnter = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // Evita que se haga submit si está en un form
-      handleAgregar();
+      guardarAgregar();
     }
   };
 
   return (
-    <div className="form-agregar">
+    <div className="contenedorAgregar">
       <input
         type="text"
+        placeholder="Escribe tu tarea"
         value={texto}
         onChange={(e) => setTexto(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="Escribe tu tarea"
+        onKeyDown={detectarEnter}
+        className="inputTexto"
       />
+      
       <input
         type="date"
         value={fecha}
         onChange={(e) => setFecha(e.target.value)}
-        onKeyDown={handleKeyDown}
+        onKeyDown={detectarEnter}
+        min={hoy}
+        className="inputFecha"
       />
-      <button onClick={handleAgregar}>Agregar</button>
+
+      <button onClick={guardarAgregar} className="btnAgregar">Agregar</button>
     </div>
   );
 }
