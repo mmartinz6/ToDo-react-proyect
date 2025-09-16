@@ -1,8 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from "react"; 
 import { UsuarioContext } from "../../context/UsuarioContext";
+import { useNavigate } from "react-router-dom";
+import "../registroUsuario/FormRegistro.css";
 
 function FormRegistro() {
-  const { registro } = useContext(UsuarioContext);  // usamos useContext
+  const { registro } = useContext(UsuarioContext);
+  const navigate = useNavigate();
 
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -11,8 +14,7 @@ function FormRegistro() {
   const [password, setPassword] = useState("");
   const [mensaje, setMensaje] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleRegistroClick = async () => {
     setMensaje("");
 
     try {
@@ -29,33 +31,47 @@ function FormRegistro() {
       setCorreo("");
       setUsername("");
       setPassword("");
+
+      navigate("/login");
     } catch (error) {
-      setMensaje(error.message || "❌ Error en el registro");
+      setMensaje(error.message || "Error en el registro");
     }
   };
 
   return (
-    <div>
-      <h2>Registro</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="contenedorRegistro">
+      <h2 className="tituloRegistro">Crear Cuenta</h2>
+
+      <div className="grupoInput">
         <label>Nombre</label>
         <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-        <br />
+      </div>
+
+      <div className="grupoInput">
         <label>Apellido</label>
         <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} />
-        <br />
-        <label>Email</label>
+      </div>
+
+      <div className="grupoInput">
+        <label>Correo</label>
         <input type="email" value={correo} onChange={(e) => setCorreo(e.target.value)} />
-        <br />
+      </div>
+
+      <div className="grupoInput">
         <label>Nombre Usuario</label>
         <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <br />
+      </div>
+
+      <div className="grupoInput">
         <label>Contraseña</label>
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <br />
-        {mensaje && <p>{mensaje}</p>}
-        <button type="submit">Crear cuenta</button>
-      </form>
+      </div>
+
+      {mensaje && <p className="mensajeError">{mensaje}</p>}
+
+      <button className="btnRegistro" onClick={handleRegistroClick}>
+        Crear cuenta
+      </button>
     </div>
   );
 }

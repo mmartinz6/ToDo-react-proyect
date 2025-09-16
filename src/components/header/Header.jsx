@@ -10,17 +10,19 @@ function Header() {
 
   const handleLogout = () => {
     logout();
-    navigate("/login"); // redirige al login
+    navigate("/login");
   };
 
   return (
     <header className="contenedorHeader">
-      <img src={logo} alt="Logo" className="logoHeader" />
-      <h1 className="tituloHeader">ToDo App</h1>
+      <div className="logoTitulo">
+        <img src={logo} alt="Logo" className="logoHeader" />
+        <h1 className="tituloHeader">ToDo App</h1>
+      </div>
 
       {usuario && (
         <div className="accionesUsuario">
-          <span className="bienvenida">Bienvenido/a, {usuario.nombre}</span>
+          <span className="bienvenida">¡Bienvenido/a, {usuario.nombre} {usuario.apellido}</span>
           <button className="botonLogout" onClick={handleLogout}>Cerrar sesión</button>
         </div>
       )}
@@ -29,3 +31,4 @@ function Header() {
 }
 
 export default Header;
+

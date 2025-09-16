@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import { UsuarioContext } from "../../context/UsuarioContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import '../loginUsuario/FormLogin.css';
 
 function FormLogin() {
-  const { login } = useContext(UsuarioContext);  // aquí usamos useContext
+  const { login } = useContext(UsuarioContext);
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -26,26 +27,38 @@ function FormLogin() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <label>Nombre de usuario</label>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <br />
-      <label>Contraseña</label>
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br />
-      {mensaje && <p style={{ color: "red" }}>{mensaje}</p>}
-      <button onClick={handleLoginClick}>Iniciar sesión</button>
+    <div className="login-container">
+      <h2 className="login-title">Iniciar Sesión</h2>
+
+      <div className="input-group">
+        <label>Nombre de usuario</label>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+
+      <div className="input-group">
+        <label>Contraseña</label>
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+
+      {mensaje && <p className="mensaje-error">{mensaje}</p>}
+
+      <button className="btn-login" onClick={handleLoginClick}>
+        Iniciar sesión
+      </button>
+
+      <p className="texto-registro">
+        ¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link>
+      </p>
     </div>
   );
 }

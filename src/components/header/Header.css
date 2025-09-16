@@ -1,20 +1,25 @@
-/* Reinicio básico de márgenes */ 
+/* Reinicio básico */
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .contenedorHeader {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  align-items: center;
   padding: 15px 20px;
   background-color: #f1f1f1;
-  color: black;
   box-shadow: 0px 0px 3px rgb(136, 136, 136);
+}
+
+/* Agrupa logo y título a la izquierda */
+.logoTitulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .logoHeader {
@@ -27,8 +32,10 @@ body {
   font-size: 28px;
   font-weight: bold;
   margin: 0;
+  color: #333;
 }
 
+/* Mensaje de bienvenida y botón a la derecha */
 .accionesUsuario {
   display: flex;
   align-items: center;
@@ -36,12 +43,13 @@ body {
 }
 
 .bienvenida {
-  font-size: 16px;
+  font-size: 18px;
   color: #333;
 }
 
 .botonLogout {
-  padding: 6px 12px;
+  padding: 10px;
+  font-size: 16px;
   border: none;
   border-radius: 5px;
   background-color: #e63946;
@@ -54,10 +62,12 @@ body {
   background-color: #d62828;
 }
 
+/* Responsivo */
 @media (max-width: 500px) {
   .contenedorHeader {
     flex-direction: column;
     text-align: center;
+    gap: 10px;
   }
 
   .logoHeader {

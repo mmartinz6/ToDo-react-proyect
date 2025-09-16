@@ -16,7 +16,7 @@
       "id": "6d4b",
       "tarea": "Soy Made",
       "fecha": "2025-09-17",
-      "estado": "pendiente",
+      "estado": "completada",
       "userId": "4618"
     },
     {
@@ -25,6 +25,13 @@
       "fecha": "2025-09-17",
       "estado": "pendiente",
       "userId": "25f6"
+    },
+    {
+      "id": "f89b",
+      "tarea": "Esta es una prueba antes de entregar",
+      "fecha": "2025-09-16",
+      "estado": "pendiente",
+      "userId": "4618"
     }
   ],
   "usuarios": [

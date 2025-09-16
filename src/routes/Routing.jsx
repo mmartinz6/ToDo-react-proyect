@@ -11,10 +11,9 @@ const Routing =() => {
   return (
     <Router>
         <Routes>
-            
-            <Route path='/Inicio' element={<Inicio />} />
-            <Route path='/Login' element={<Login />} />
-            <Route path='/Registro' element={<Registro />} />
+          <Route path='/Login' element={<Login />} />
+          <Route path='/Inicio' element={<Inicio />} />
+          <Route path='/Registro' element={<Registro />} />
         </Routes>
     </Router>
   )

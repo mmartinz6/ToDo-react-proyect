@@ -1,0 +1,76 @@
+.contenedorRegistro {
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  background-color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.tituloRegistro {
+  margin-bottom: 25px;
+  color: #333333;
+  font-size: 1.8em;
+}
+
+.grupoInput {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.grupoInput label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555555;
+}
+
+.grupoInput input {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.grupoInput input:focus {
+  border-color: #28a745;
+  outline: none;
+}
+
+.mensajeError {
+  color: #ff4d4f;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.btnRegistro {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btnRegistro:hover {
+  background-color: #1e7e34;
+}
+
+.texto-registro {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.texto-registro a {
+  color: blue;
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}
